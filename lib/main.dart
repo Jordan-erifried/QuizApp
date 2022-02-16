@@ -41,7 +41,12 @@ class _QuizPageState extends State<QuizPage> {
     'It slug\'s blood is green',
   ];
 
-  int questionNumber = 1;
+  List<bool> answers = [
+    false,
+    true,
+    true,
+  ];
+  int questionNumber = 0;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -53,7 +58,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(8.0),
             child: Center(
               child: Text(
-                question[questionNumber],
+               question[questionNumber],
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 25.0,
@@ -70,10 +75,18 @@ class _QuizPageState extends State<QuizPage> {
             child: FlatButton(
               color: Colors.green,
               onPressed: () {
+                bool correcteAnswer = answers[questionNumber];
+
+                if (correcteAnswer == true) {
+                  print('user got it right!');
+                } else {
+                  print('user got it wrong');
+                }
+
                 setState(() {
                   questionNumber++;
-                  print(questionNumber);
                 });
+               print(questionNumber);
               },
               child: Text(
                 'True',
@@ -92,9 +105,17 @@ class _QuizPageState extends State<QuizPage> {
             child: FlatButton(
               color: Colors.red,
               onPressed: () {
+                bool correctAnswer = answers[questionNumber];
+
+                if (correctAnswer == false) {
+                  print('user got it right!');
+                } else {
+                  print('user got it wrong');
+                }
                 setState(() {
-                  print(questionNumber);
+                  questionNumber++;
                 });
+                print(questionNumber);
               },
               child: Text(
                   'False',
