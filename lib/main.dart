@@ -91,7 +91,11 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(8.0),
             child: FlatButton(
               color: Colors.red,
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  print(questionNumber);
+                });
+              },
               child: Text(
                   'False',
                 style: TextStyle(
