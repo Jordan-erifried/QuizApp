@@ -36,7 +36,7 @@ class _QuizPageState extends State<QuizPage> {
   List<Widget> scoreKeeper = [];
 
   List<String> question = [
-    'You can lead a cow down stairs out not up staird.',
+    'You can lead a cow down stairs out not up stairs.',
     'Approximately one quarter of human bones are in the feet',
     'It slug\'s blood is green',
   ];
