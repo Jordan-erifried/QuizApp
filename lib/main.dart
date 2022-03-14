@@ -32,6 +32,18 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
+  List<String> questions = [
+    "You can lean a cow down stairs but not up stairs.",
+    "Approximately one quarter of human bones are in the feet.",
+    "A slug\'s blood is green.",
+    "My fav language it's Flutter"
+  ];
+
+  List<Widget> scoreKeeper = [];
+
+  List<bool> answers = [false, true, true];
+
+  int questionNumber = 0;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -44,7 +56,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(15.0),
             child: Center(
                 child: Text(
-                    "This is where the question text will go",
+                    questions[questionNumber],
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
@@ -60,7 +72,20 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(15.0),
             child: FlatButton(
               color: Colors.green,
-              onPressed: () {},
+              onPressed: () {
+                bool correctAnswer = answers[questionNumber];
+
+                if(correctAnswer == true) {
+                  print("User got it right !");
+                } else {
+                  print("User got it wrong !");
+                }
+
+                setState(() {
+                  questionNumber++;
+                });
+                print(questionNumber);
+              },
               child: Text(
                 'True',
               style: TextStyle(
@@ -77,17 +102,34 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(15.0),
             child: FlatButton(
               color: Colors.red,
-              onPressed: () {},
+              onPressed: () {
+
+                bool correctAnswer = answers[questionNumber];
+
+                if(correctAnswer == false) {
+                  print("User got it wrong!");
+                } else {
+                  print("User got it right!");
+                }
+               setState(() {
+                 questionNumber++;
+               });
+               print(questionNumber);
+              },
               child: Text(
                 'False',
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
-                  fontSize: 20.0,
+                  fontSize: 25.0,
                 ),
               ),
             ),
           ),
+        ),
+
+        Row(
+          children: scoreKeeper,
         )
       ],
     );
